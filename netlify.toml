@@ -1,0 +1,24 @@
+[build]
+  publish = "build"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/get"
+  to = "/.netlify/functions/get"
+  status = 200
+
+[[headers]]
+  for = "/get"
+  [headers.values]
+    Content-Type = "text/plain; charset=UTF-8"
+    Content-Disposition = "attachment; filename=get.ps1"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
